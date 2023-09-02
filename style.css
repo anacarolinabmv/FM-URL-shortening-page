@@ -66,6 +66,7 @@ body {
   color: var(--Very-Dark-Violet);
   text-align: center;
   letter-spacing: -1px;
+  margin-bottom: 2rem;
 }
 .btn:link,
 .btn:visited {
@@ -195,8 +196,7 @@ body {
 }
 
 /*Statistics Section*/
-.section__statistics {
-}
+
 .statistics__cards-container {
   display: flex;
   justify-content: space-between;
@@ -249,6 +249,19 @@ body {
   font-size: 1.8rem;
   color: var(--Grayish-Violet);
 }
+
+/*CTA Cection*/
+.section-CTA {
+  padding: 6rem 0;
+  background-color: var(--Dark-Violet);
+  text-align: center;
+  background-image: url(images/bg-boost-desktop.svg);
+  font-size: 2rem;
+}
+.section-CTA__heading {
+  color: #fff;
+}
+
 /* .attribution {
   font-size: 11px;
   text-align: center;
@@ -256,12 +269,3 @@ body {
 .attribution a {
   color: hsl(228, 45%, 44%);
 } */
-
-/*CTA Cection*/
-.section-CTA {
-  padding: 4rem;
-  background-color: var(--Dark-Violet);
-}
-.section-CTA__heading {
-  color: #fff;
-}
