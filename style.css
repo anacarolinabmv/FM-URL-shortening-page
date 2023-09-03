@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -18,24 +19,26 @@
 html {
   font-size: 62.5%;
 }
+
 body {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   overflow-x: hidden;
+  font-size: 1.8rem;
 }
 
 /****** HELPER CLASSES ******/
 
-.padding-vertical--4rem {
+.pd-vrt--4rem {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
-.padding-vertical--6rem {
+.pd-vrt--6rem {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
-.padding-horizontal--4rem {
+.pd-hor--4rem {
   padding-left: 4rem;
   padding-right: 4rem;
 }
@@ -47,6 +50,9 @@ body {
 }
 .mg-top--8 {
   margin-top: 8rem;
+}
+.mg-top--10 {
+  margin-top: 10rem;
 }
 
 /****** GENERAL CLASSES ******/
@@ -73,6 +79,12 @@ body {
   letter-spacing: -1px;
   margin-bottom: 2rem;
 }
+.section__subheading {
+  color: var(--Grayish-Violet);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.6;
+}
 .btn:link,
 .btn:visited {
   display: inline-block;
@@ -81,23 +93,20 @@ body {
   padding: 0.6em 1.6em;
   color: #fff !important;
   text-decoration: none;
-  color: var(--Grayish-Violet);
 }
 
 .font-bold {
   font-weight: 700;
 }
+.right-align {
+  margin-left: auto;
+}
 
 /****** NAVIGATION BAR ******/
-.navbar {
-  width: 100%;
-}
+
 .navbar__container {
   display: flex;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  max-width: 120rem;
 }
 .navbar__logo-box {
   margin-right: 8rem;
@@ -107,19 +116,13 @@ body {
   align-items: center;
   gap: 3rem;
 }
-.navbar__list--right-align {
-  margin-left: auto;
-}
-
 .navbar__list-item {
   list-style: none;
-  display: inline-block;
 }
 .navbar__link:link,
 .navbar__link:visited {
   color: var(--Grayish-Violet);
   text-decoration: none;
-  font-size: 1.6rem;
 }
 
 /****** HEADER ******/
@@ -133,7 +136,6 @@ body {
 }
 .header__subheading {
   font-size: 2.4rem;
-  font-weight: 500;
   color: var(--Grayish-Violet);
 }
 .header__btn:link,
@@ -143,11 +145,11 @@ body {
 .header__ilustration-box {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -25rem;
 }
-.header__ilustration {
+/* .header__ilustration {
   transform: translateX(25rem);
-}
+} */
 
 /****** MAIN ******/
 .main {
@@ -192,14 +194,6 @@ body {
   align-items: center;
 }
 
-.section__subheading {
-  color: var(--Grayish-Violet);
-  font-size: 1.8rem;
-  text-align: center;
-  font-weight: 500;
-  line-height: 1.6;
-}
-
 /*Statistics Section*/
 
 .statistics__cards-container {
@@ -219,43 +213,40 @@ body {
   background-color: var(--Cyan);
   height: 8px;
 }
-.card {
+.statistics__card {
   background-color: #fff;
   border-radius: 1rem;
   padding: 2rem;
   position: relative;
   z-index: 4;
 }
+.statistics__card--2 {
+  transform: translateY(4rem);
+}
+.statistics__card--3 {
+  transform: translateY(8rem);
+}
 .card__icon-box {
-  display: inline-block;
-  padding: 2rem;
   background-color: var(--Dark-Violet);
+  padding: 2.4rem;
+  display: flex;
   border-radius: 50%;
   position: absolute;
   top: 0;
   transform: translateY(-50%);
 }
-.card-2 {
-  transform: translateY(4rem);
-}
-.card-3 {
-  transform: translateY(8rem);
-}
 .card__icon {
   height: 100%;
   width: 100%;
 }
-
 .card__heading {
   font-size: 2.2rem;
-  margin-top: 4rem;
 }
 .card__paragraph {
-  font-size: 1.8rem;
   color: var(--Grayish-Violet);
 }
 
-/*CTA Cection*/
+/****** CTA SECTION ******/
 .section-CTA {
   background-color: var(--Dark-Violet);
   text-align: center;
@@ -268,30 +259,28 @@ body {
   color: #fff;
 }
 
-/*Footer*/
+/****** FOOTER *****/
 .footer {
   background-color: var(--Very-Dark-Violet);
   color: #fff;
+  position: relative;
 }
 .footer__container {
   display: flex;
   justify-content: space-between;
 }
 .footer__links-box {
-  width: 60%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
 }
 .footer__list {
   list-style: none;
 }
-.footer__list-social {
-  display: flex;
-  gap: 2rem;
-}
 .footer__heading {
   font-size: 1.6rem;
   margin-bottom: 2rem;
+  font-weight: 700;
 }
 .footer__list-item {
   margin: 1rem 0;
@@ -302,17 +291,22 @@ body {
   color: var(--Grayish-Violet);
   font-size: 1.4rem;
 }
+.footer__list-social {
+  display: flex;
+  gap: 2.4rem;
+}
+
 .attribution {
-  padding: 1rem;
-  width: 100%;
-  max-width: 55rem;
   margin: 0 auto;
-  /* background-color: rgb(255, 255, 255, 0.2); */
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
   font-size: 1.6rem;
-  text-align: center;
+  text-align: left;
   color: #fff;
-  border-radius: 10rem;
-  margin-top: 4rem;
+  color: #fff;
+  padding: 0 2rem;
 }
 .attribution a:link,
 .attribution a:visited {
