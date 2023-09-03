@@ -160,7 +160,7 @@ body {
 .header__ilustration-box {
   position: absolute;
   top: 0;
-  right: -25rem;
+  right: -20rem;
 }
 /* .header__ilustration {
   transform: translateX(25rem);
@@ -168,7 +168,7 @@ body {
 
 /****** MAIN ******/
 .main {
-  margin-top: 20rem;
+  margin-top: 18rem;
   padding-bottom: 20rem;
   background-color: #f0edf8;
 }
@@ -225,6 +225,45 @@ body {
   visibility: hidden;
   color: rgb(217, 47, 20);
   font-style: italic;
+}
+
+.shortened-link__container {
+  margin-top: -5rem;
+}
+.shortened-link__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1.5rem 3rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.short-link__box {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.long-link:link,
+.long-link:visited {
+  text-decoration: none;
+  color: var(--Very-Dark-Violet);
+}
+.short-link:link,
+.short-link:visited {
+  text-decoration: none;
+  color: var(--Cyan);
+}
+.copy-link__btn:link,
+.copy-link__btn:visited {
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+}
+.copied-link {
+  background-color: var(--Dark-Violet);
 }
 /*Statistics Section*/
 
