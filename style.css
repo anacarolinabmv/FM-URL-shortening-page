@@ -93,6 +93,12 @@ body {
   padding: 0.6em 1.6em;
   color: #fff !important;
   text-decoration: none;
+  transition: background-color 200ms ease-in-out;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #95e7e7;
 }
 
 .font-bold {
@@ -107,10 +113,13 @@ body {
 .navbar__container {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 .navbar__logo-box {
   margin-right: 8rem;
+  display: flex;
 }
+
 .navbar__list {
   display: flex;
   align-items: center;
@@ -123,6 +132,12 @@ body {
 .navbar__link:visited {
   color: var(--Grayish-Violet);
   text-decoration: none;
+  transition: color 200ms ease-in-out;
+}
+
+.navbar__link:hover,
+.navbar__link:active {
+  color: var(--Very-Dark-Violet);
 }
 
 /****** HEADER ******/
@@ -159,26 +174,38 @@ body {
 }
 /*Link shorter section*/
 
-.link-shorter__box {
+.link-shorter {
   padding: 6rem;
   background-color: var(--Dark-Violet);
   transform: translateY(-50%);
   border-radius: 1rem;
+  background-image: url(images/bg-shorten-desktop.svg);
+  background-size: cover;
+}
+.link-shorter__box {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
-  background-image: url(images/bg-shorten-desktop.svg);
-  background-size: cover;
+  position: relative;
 }
+
 .link-shorter__input {
   width: 100%;
   padding: 2rem;
   border-radius: 1rem;
-  border: none;
+  border: 3px solid transparent;
   font-size: 2rem;
   color: var(--Grayish-Violet);
+  display: inline-block;
 }
+.link-shorter__input.error {
+  border-color: rgb(217, 47, 20);
+}
+.link-shorter__input.error::placeholder {
+  color: #e88272;
+}
+
 .link-shorter__input:focus {
   outline: none;
 }
@@ -193,7 +220,12 @@ body {
   display: flex;
   align-items: center;
 }
-
+.error-msg {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(217, 47, 20);
+  font-style: italic;
+}
 /*Statistics Section*/
 
 .statistics__cards-container {
@@ -290,7 +322,22 @@ body {
   text-decoration: none;
   color: var(--Grayish-Violet);
   font-size: 1.4rem;
+  transition: color 200ms ease-in-out;
 }
+.footer__link:hover,
+.footer__link:active {
+  color: var(--Cyan);
+}
+
+.footer__link:link path,
+.footer__link:visited path {
+  transition: fill 200ms ease-in-out;
+}
+.footer__link:hover path,
+.footer__link:active path {
+  fill: var(--Cyan);
+}
+
 .footer__list-social {
   display: flex;
   gap: 2.4rem;
