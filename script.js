@@ -7,9 +7,12 @@ const btnShorten = document.getElementById('btn-shorten');
 const shortLinkContainer = document.querySelector('.shortened-link__container');
 const errorMsgEl = document.querySelector('.error-msg');
 
+let linksArr = [];
+
 //
 
 //Functionality
+
 const clearInput = function (input) {
   input.value = '';
 };
@@ -52,6 +55,8 @@ const shortenLink = async function () {
     const shortUrl = await data.result.short_link;
 
     renderLink(shortUrl, longUrl);
+    setLocalStorage(shortUrl, longUrl);
+
     clearInput(inputEl);
   } catch (err) {
     displayError(data.error);
@@ -72,6 +77,20 @@ const renderLink = function (shortUrl, longUrl) {
   const btnCopy = document.querySelector('.copy-link__btn');
   enableCopyBtn(btnCopy, shortUrl);
 };
+
+const setLocalStorage = function (shortUrl, longUrl) {
+  linksArr.push([shortUrl, longUrl]);
+
+  localStorage.setItem('links', JSON.stringify(linksArr));
+};
+
+const getLocalStorage = function () {
+  const links = JSON.parse(localStorage.getItem('links'));
+  if (!links) return;
+
+  links.forEach((link) => renderLink(...link));
+};
+getLocalStorage();
 
 //
 
