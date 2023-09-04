@@ -2,8 +2,19 @@
 
 const inputEl = document.getElementById('input-link');
 const btnShorten = document.getElementById('btn-shorten');
-let btnCopy;
 const shortLinkContainer = document.querySelector('.shortened-link__container');
+
+const clearInput = function (input) {
+  input.value = '';
+};
+
+const enableCopyBtn = function (btn, shortUrl) {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    navigator.clipboard.writeText(shortUrl);
+  });
+};
 
 const shortenLink = async function () {
   try {
@@ -14,17 +25,15 @@ const shortenLink = async function () {
     const data = await response.json();
     const shortUrl = await data.result.short_link;
 
-    if (!data.ok) throw new Error('Could not shorten link! ');
+    if (!data.ok) throw new Error('Could not shorten link!');
 
     renderLink(shortUrl, longUrl);
+    clearInput(inputEl);
   } catch (err) {
     console.log(err);
   }
 };
 
-const copyLink = function (btn) {
-  // const a = btn.closest('.short-link__box');
-};
 const renderLink = function (shortUrl, longUrl) {
   const html = `  <div class="shortened-link__box">
             <a href="${longUrl}" class="long-link">${longUrl}</a>
@@ -36,16 +45,20 @@ const renderLink = function (shortUrl, longUrl) {
 
   shortLinkContainer.insertAdjacentHTML('afterbegin', html);
 
-  btnCopy = document.querySelector('.copy-link__btn');
-
-  btnCopy.addEventListener('click', function (event) {
-    event.preventDefault();
-
-    navigator.clipboard.writeText(shortUrl);
-  });
+  const btnCopy = document.querySelector('.copy-link__btn');
+  enableCopyBtn(btnCopy, shortUrl);
 };
 
-btnShorten.addEventListener('click', (event) => {
-  event.preventDefault();
+//
+
+//Event Listeners
+
+btnShorten.addEventListener('click', (e) => {
+  e.preventDefault();
+  shortenLink();
+});
+
+inputEl.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
   shortenLink();
 });
