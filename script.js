@@ -32,7 +32,8 @@ const hideError = function () {
 const enableCopyBtn = function (btn, shortUrl) {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-
+    btn.classList.add('copied-link');
+    btn.innerHTML = 'Copied';
     navigator.clipboard.writeText(shortUrl);
   });
 };

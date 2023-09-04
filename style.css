@@ -24,7 +24,7 @@ body {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   font-size: 1.8rem;
 }
 
@@ -236,6 +236,7 @@ body {
 .shortened-link__box {
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
@@ -266,7 +267,7 @@ body {
   white-space: nowrap;
 }
 .copied-link {
-  background-color: var(--Dark-Violet);
+  background-color: var(--Dark-Violet) !important;
 }
 .clear-all:link,
 .clear-all:visited {
