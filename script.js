@@ -6,6 +6,7 @@ const inputEl = document.getElementById('input-link');
 const btnShorten = document.getElementById('btn-shorten');
 const shortLinkContainer = document.querySelector('.shortened-link__container');
 const errorMsgEl = document.querySelector('.error-msg');
+const btnClearAll = document.getElementById('clear-all');
 
 let linksArr = [];
 
@@ -55,6 +56,7 @@ const shortenLink = async function () {
     const shortUrl = await data.result.short_link;
 
     renderLink(shortUrl, longUrl);
+    btnClearAll.style.visibility = 'visible';
     setLocalStorage(shortUrl, longUrl);
 
     clearInput(inputEl);
@@ -64,13 +66,14 @@ const shortenLink = async function () {
 };
 
 const renderLink = function (shortUrl, longUrl) {
-  const html = `  <div class="shortened-link__box">
+  let html = `  <div class="shortened-link__box">
             <a href="${longUrl}" class="long-link">${longUrl}</a>
             <div class="short-link__box">
               <a href="https://${shortUrl}" class="short-link">${shortUrl}</a>
               <a href="#" class="btn copy-link__btn font-bold" >Copy</a>
             </div>
-          </div>`;
+          </div>
+        `;
 
   shortLinkContainer.insertAdjacentHTML('afterbegin', html);
 
@@ -92,6 +95,13 @@ const getLocalStorage = function () {
 };
 getLocalStorage();
 
+const clearLocalStorage = function () {
+  localStorage.clear();
+
+  shortLinkContainer.innerHTML = '';
+  shortLinkContainer.appendChild(btnClearAll);
+  btnClearAll.style.visibility = 'hidden';
+};
 //
 
 //Event Listeners
@@ -110,4 +120,8 @@ inputEl.addEventListener('focus', (e) => {
   if (errorMsgEl.classList.contains('error') || inputEl.classList.contains('error')) {
     hideError();
   }
+});
+btnClearAll.addEventListener('click', (e) => {
+  e.preventDefault();
+  clearLocalStorage();
 });
