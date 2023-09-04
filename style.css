@@ -18,6 +18,7 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden !important;
 }
 
 body {
@@ -411,4 +412,118 @@ body {
 .attribution a:link,
 .attribution a:visited {
   color: inherit;
+}
+
+/*Media queries*/
+@media (max-width: 1180px) {
+  .header__text {
+    margin-top: -0.5rem;
+    margin-bottom: 4rem;
+  }
+}
+@media (max-width: 1105px) {
+  .heading-primary {
+    font-size: 7rem;
+  }
+  .header__subheading {
+    font-size: 2.2rem;
+  }
+  .header__ilustration-box {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 945px) {
+  .header {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .header__text {
+    width: 100%;
+    margin-top: 54rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .header__ilustration-box {
+    transform: translateX(50%);
+    top: 0;
+    right: 50%;
+  }
+  .heading-primary {
+    font-size: 8.2rem;
+    margin-bottom: 2rem;
+  }
+  .header__subheading {
+    font-size: 2.4rem;
+  }
+  .navbar__list.right-align {
+    padding-left: 3rem;
+  }
+  .statistics {
+    margin-top: 4rem;
+  }
+}
+@media (max-width: 821px) {
+  .navbar {
+    position: relative;
+  }
+  .navbar__container {
+    position: absolute;
+    top: 10rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar__logo-box {
+    position: absolute;
+    top: -6rem;
+    left: 6rem;
+  }
+  .navbar__logo {
+    transform: scale(1.2);
+  }
+
+  .navbar__list {
+    background-color: var(--Dark-Violet);
+    z-index: 999;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 3rem;
+    width: 80%;
+    height: 40rem;
+    padding: 4rem;
+  }
+
+  .navbar__list:first-of-type {
+    border-radius: 1rem 1rem 0 0;
+    padding-top: 6rem;
+  }
+  .navbar__list:last-of-type {
+    position: relative;
+    padding-bottom: 6rem;
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  .navbar__list:last-of-type::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 1px;
+    background-color: rgb(229, 229, 229, 0.2);
+    width: 80%;
+    transform: translateX(-50%);
+  }
+  .navbar__list.right-align {
+    margin: 0;
+  }
+  .navbar__link:link,
+  .navbar__link:visited {
+    color: #fff;
+    font-size: 2.4rem;
+  }
+  .btn.navbar__link {
+    display: block;
+    /* width: 100%; */
+  }
 }
