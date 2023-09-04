@@ -1,11 +1,28 @@
 'use strict';
 
+//Selecting Elements
+
 const inputEl = document.getElementById('input-link');
 const btnShorten = document.getElementById('btn-shorten');
 const shortLinkContainer = document.querySelector('.shortened-link__container');
+const errorMsgEl = document.querySelector('.error-msg');
 
+//
+
+//Functionality
 const clearInput = function (input) {
   input.value = '';
+};
+
+const displayError = function (msg) {
+  if (msg) errorMsgEl.textContent = msg;
+
+  errorMsgEl.classList.add('error');
+  inputEl.classList.add('error');
+};
+const hideError = function () {
+  errorMsgEl.classList.remove('error');
+  inputEl.classList.remove('error');
 };
 
 const enableCopyBtn = function (btn, shortUrl) {
@@ -17,20 +34,27 @@ const enableCopyBtn = function (btn, shortUrl) {
 };
 
 const shortenLink = async function () {
+  let data;
   try {
     const longUrl = inputEl.value;
     const apiUrl = `https://api.shrtco.de/v2/shorten?url=${longUrl}`;
 
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    const shortUrl = await data.result.short_link;
+    if (!longUrl) {
+      displayError();
+      return;
+    }
 
-    if (!data.ok) throw new Error('Could not shorten link!');
+    const response = await fetch(apiUrl);
+    data = await response.json();
+
+    if (!data.ok) throw new Error(`${data.error}`);
+
+    const shortUrl = await data.result.short_link;
 
     renderLink(shortUrl, longUrl);
     clearInput(inputEl);
   } catch (err) {
-    console.log(err);
+    displayError(data.error);
   }
 };
 
@@ -61,4 +85,10 @@ btnShorten.addEventListener('click', (e) => {
 inputEl.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
   shortenLink();
+});
+
+inputEl.addEventListener('focus', (e) => {
+  if (errorMsgEl.classList.contains('error') || inputEl.classList.contains('error')) {
+    hideError();
+  }
 });
