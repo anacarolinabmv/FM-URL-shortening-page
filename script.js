@@ -7,6 +7,7 @@ const btnShorten = document.getElementById('btn-shorten');
 const shortLinkContainer = document.querySelector('.shortened-link__container');
 const errorMsgEl = document.querySelector('.error-msg');
 const btnClearAll = document.getElementById('clear-all');
+const btnNav = document.getElementById('mobile-nav');
 
 let linksArr = [];
 
@@ -103,13 +104,24 @@ const clearLocalStorage = function () {
   shortLinkContainer.appendChild(btnClearAll);
   btnClearAll.style.visibility = 'hidden';
 };
-//
+
+const mobileNav = function () {
+  const navbar = document.querySelector('.navbar__links');
+  const headerIlustration = document.querySelector('.header__ilustration-box');
+  navbar.classList.toggle('show__nav');
+  headerIlustration.classList.toggle('overlay');
+};
+///* z-index: 999; */
 
 //Event Listeners
 
 btnShorten.addEventListener('click', (e) => {
   e.preventDefault();
   shortenLink();
+});
+btnNav.addEventListener('click', (e) => {
+  e.preventDefault();
+  mobileNav();
 });
 
 inputEl.addEventListener('keydown', (e) => {

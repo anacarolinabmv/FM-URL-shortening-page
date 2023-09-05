@@ -23,6 +23,7 @@ html {
 
 body {
   box-sizing: border-box;
+  width: 100vw;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   overflow-x: hidden !important;
@@ -126,6 +127,7 @@ body {
   display: flex;
   width: 70%;
   justify-content: space-between;
+  z-index: 999;
 }
 .navbar__list {
   display: flex;
@@ -167,6 +169,10 @@ body {
   position: absolute;
   top: 0;
   right: -20rem;
+  transition: filter 300ms ease-in;
+}
+.header__ilustration-box.overlay {
+  filter: blur(6px);
 }
 
 /****** MAIN ******/
@@ -304,7 +310,7 @@ body {
   border-radius: 1rem;
   padding: 2rem;
   position: relative;
-  z-index: 4;
+  z-index: 99;
 }
 .statistics__card-2 {
   transform: translateY(4rem);
@@ -479,12 +485,11 @@ body {
   }
 
   .navbar__links {
-    /* display: none; */
+    /* opacity: 0; */
+    transform: translateX(150%);
     position: absolute;
     top: 14rem;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
     flex-direction: column;
     align-items: center;
     width: 80%;
@@ -492,9 +497,13 @@ body {
     border-radius: 1rem;
     background-color: var(--Dark-Violet);
     padding: 2rem 0;
+    transition: transform 300ms;
   }
+  .show__nav {
+    transform: translateX(-50%);
+  }
+
   .navbar__list {
-    z-index: 999;
     flex-direction: column;
     align-items: stretch;
     text-align: center;
@@ -528,11 +537,9 @@ body {
     font-size: 6rem;
   }
   .header__ilustration-box {
-    top: 6.4rem;
+    top: 4rem;
   }
-  .header__ilustration-box.overlay {
-    filter: blur(3px);
-  }
+
   .statistics__cards-container {
     gap: 2rem;
   }
